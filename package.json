@@ -1,0 +1,24 @@
+{
+  "name": "desafioprogramacaoautomacaotestes",
+  "version": "1.0.0",
+  "description": "PGATS - Trabalho Final Disciplina Programação para Automação de Testes",
+  "main": "trabalho-final.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafacalandreli/desafioProgramacaoAutomacaoTestes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafacalandreli/desafioProgramacaoAutomacaoTestes/issues"
+  },
+  "homepage": "https://github.com/rafacalandreli/desafioProgramacaoAutomacaoTestes#readme",
+  "devDependencies": {
+    "mocha": "^11.5.0"
+  }
+}
