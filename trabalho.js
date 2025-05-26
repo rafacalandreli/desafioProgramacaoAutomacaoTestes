@@ -3,24 +3,37 @@ export function geradorDeTagsDeIdentificacao(nome) {
 }
 
 export function verificarSePodeSerAdotado(idade, porte) {
-  if(idade === 1 && porte === 'M') {
-        return true;
+  let podeAdotar = false;
+  if (idade === 1 && porte === "M") {
+    podeAdotar = true;
   }
-  return false;
+  return podeAdotar;
 }
 
 export function calcularConsumoDeRacao(nome, idade, peso) {
-    const qtdDiaria = peso * 300;
-    return qtdDiaria;
+  const consumoEmGramas = 300;
+  return consumoEmGramas * peso ;
 }
-  
+
+export function decidirTipoDeAtividadePorPorte(porte) {
+  let tipoAtividade = "";
+  switch (porte) {
+    case "pequeno":
+      tipoAtividade = "brincar dentro de casa";
+      break;
+    case "medio":
+      tipoAtividade = "caminhada no quarteirao";
+      break;
+    case "grande":
+      tipoAtividade = "correr no parque";
+      break;
+    default:
+      return "atividade desconhecida";
+  }
+  return tipoAtividade;
+}
+
 export async function buscarDadoAsync() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('Pipoca');
-    }, 100); 
-  });
+  await new Promise(resolve => setTimeout(resolve, 100));
+  return "Pipoca";
 }
-
-
-  
