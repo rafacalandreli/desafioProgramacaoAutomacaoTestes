@@ -1,8 +1,27 @@
+function validarString(valor, nomeCampo) {
+  if (typeof valor !== 'string') {
+    throw new TypeError(`${nomeCampo} deve ser uma string.`);
+  }
+}
+
+function validarNumero(valor, nomeCampo, positivo = false) {
+  if (typeof valor !== 'number' || isNaN(valor)) {
+    throw new TypeError(`${nomeCampo} deve ser um número.`);
+  }
+  if (positivo && valor <= 0) {
+    throw new RangeError(`${nomeCampo} deve ser um número positivo.`);
+  }
+}
+
+
 export function geradorDeTagsDeIdentificacao(nome) {
-  return nome ? nome.toUpperCase() : "";
+  validarString(nome, 'Nome');
+  return nome.toUpperCase();
 }
 
 export function verificarSePodeSerAdotado(idade, porte) {
+  validarNumero(idade, 'Idade');
+  validarString(porte, 'Porte');
   let podeAdotar = false;
   if (idade === 1 && porte === "M") {
     podeAdotar = true;
@@ -12,12 +31,20 @@ export function verificarSePodeSerAdotado(idade, porte) {
 
 export function calcularConsumoDeRacao(nome, idade, peso) {
   const consumoEmGramas = 300;
-  return consumoEmGramas * peso ;
+  validarString(nome, 'Nome');
+  validarNumero(idade, 'Idade');
+  validarNumero(peso, 'Peso', true);
+  
+	let consumoTotal = peso * consumoEmGramas;
+  return consumoTotal ;
 }
 
 export function decidirTipoDeAtividadePorPorte(porte) {
   let tipoAtividade = "";
-  switch (porte) {
+  validarString(porte, 'Porte');
+  const portePadronizado = porte.toLowerCase();
+  
+  switch (portePadronizado) {
     case "pequeno":
       tipoAtividade = "brincar dentro de casa";
       break;
@@ -34,6 +61,7 @@ export function decidirTipoDeAtividadePorPorte(porte) {
 }
 
 export async function buscarDadoAsync() {
-  await new Promise(resolve => setTimeout(resolve, 100));
+  const delay = 100;
+  await new Promise(resolve => setTimeout(resolve, delay));
   return "Pipoca";
 }
