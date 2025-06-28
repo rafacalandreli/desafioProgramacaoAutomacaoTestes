@@ -25,14 +25,12 @@ jobs:
              node-version: '22.x'
          - name: Install Mocha
            run: npm install -g mocha
-         - name: Check Mocha version
+         - name: Verificar se o  Mocha foi instalado corretamente
            run: mocha --version
-         - name: Run Mocha tests
+         - name: Instalar dependencias do projeto
+           run: npm install
+         - name: Executar os testes via Mocha
            run: npm test
-         - name: Install mocha-github-actions-reporter
-           run: npm install mocha-github-actions-reporter
-         - name: Run tests with reporter
-           run: npx mocha --reporter mocha-github-actions-reporter ./test/**/*.test.js
 
 
 
