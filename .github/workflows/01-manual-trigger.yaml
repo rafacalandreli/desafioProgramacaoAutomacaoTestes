@@ -1,0 +1,49 @@
+# CI  de NÍVEL 1 - Disparo manual a partir de 1 clique
+
+# nome do nosso 'pipeline'
+name: 'Execução manual'
+
+# regras de execução (gatilhos/triggers)
+# gatilho de execução manual = workflow_dispatch
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+# trabalhos/tarefas dentro do pipeline = jobs
+jobs:
+  tests:
+
+    #maquina que o job vai executar
+    runs-on: ubuntu-latest
+
+    #passos do script de build
+    steps:
+      # Clone do projeto
+      - uses: actions/checkout@v4
+
+      # install node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      # install dependencies
+      - name: Instalando as dependencies
+        run: npm install
+      
+      # Validate mocha
+      - name: Instalando as dependencies
+        run: npx mocha --version
+      
+      # executar os testes via mocha
+      - name: Executando os testes via mocha
+        run: npm test
+
+      - name: Salvando relatório mochawesome como artefato
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: mochawesome-report
+          path: mochawesome-report/

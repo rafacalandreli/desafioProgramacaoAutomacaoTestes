@@ -5,7 +5,7 @@
   "main": "trabalho-final.js",
   "type": "module",
   "scripts": {
-    "test": "mocha trabalho-final.test.js"
+    "test": "mocha tests/**/*.js --reporter mochawesome"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/rafacalandreli/desafioProgramacaoAutomacaoTestes#readme",
   "devDependencies": {
-    "mocha": "^11.5.0"
+    "mocha": "^11.5.0",
+    "mochawesome": "^7.1.3"
   }
 }

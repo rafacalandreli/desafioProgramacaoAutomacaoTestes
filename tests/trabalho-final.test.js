@@ -6,7 +6,7 @@ import {
   calcularConsumoDeRacao,
   decidirTipoDeAtividadePorPorte,
   buscarDadoAsync
-} from './trabalho.js';
+} from '../trabalho.js';
 
 describe('Testes da disciplina - fundamentos JS', () => {
   
