@@ -27,10 +27,11 @@ jobs:
            run: npm ci
          - name: Run Mocha tests
            run: npm test
-         - name: Publish Test Summary Results
-           if: always()
-           uses: actions/upload-artifact@v4
-           with:
-             name: test-results
-             path: test_results.json
+         - name: Install mocha-github-actions-reporter
+           run: npm install mocha-github-actions-reporter
+         - name: Run tests with reporter
+           run: npx mocha --reporter mocha-github-actions-reporter ./test/**/*.test.js
+
+
+
       
