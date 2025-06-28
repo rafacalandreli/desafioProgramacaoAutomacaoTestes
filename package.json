@@ -5,7 +5,7 @@
   "main": "trabalho-final.js",
   "type": "module",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha trabalho-final.test.js"
   },
   "repository": {
     "type": "git",
